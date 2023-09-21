@@ -1,5 +1,4 @@
 public class Polynomial{
-<<<<<<< HEAD
     double[] coefficients;
   
     public Polynomial(){
@@ -43,15 +42,5 @@ public class Polynomial{
     public boolean hasRoot(double root){
 	double result = evaluate(root);
 	return result==0;
-=======
-    double[]coefficients;
-  
-    public Polynomial(){
-      double[] coefficients={0};
->>>>>>> 64877d6a1de38b462c505b8c23925a94fd26230f
-    }
-
-    public Polynomial(double[]){
-      
     }
 }
