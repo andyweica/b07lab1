@@ -1,38 +1,45 @@
 public class Polynomial{
     double[] coefficients;
+    int[] exponents;
   
     public Polynomial(){
       coefficients = new double[] {0};
     }
 
-    public Polynomial(double[] array){
-      coefficients = array;
+    public Polynomial(double[] coefficients, int[] exponents){
+      this.coefficients = coefficients;
+      this.exponents = exponents;
+    }
+
+    public Polynomial(File filePath){
+	/* change the negative sign to +- -> split between plus sign -> split with x
+	*/
+	
     }
 
     public Polynomial add(Polynomial additive){
-      Polynomial new_p = new Polynomial();
-      if(additive.coefficients.length>coefficients.length){
-	new_p = new Polynomial(additive.coefficients);
-	for(int i=0;i<coefficients.length;i++){
-      	    new_p.coefficients[i]=new_p.coefficients[i]+coefficients[i];
-        } 
+      int max_e = Math.max(this.exponents[exponents.length-1], additive.exponents[additive.exponents.length-1]);
+      double[] new_c = new doube[max_e+1];
+      int[] new_e = new int[max_e+1];
+
+      for(int i=0;i<max_e+1;i++){
+	
       }
-      else{
-	new_p = new Polynomial(coefficients);
-	for(int i=0;i<additive.coefficients.length;i++){
-      	    new_p.coefficients[i]=new_p.coefficients[i]+additive.coefficients[i];
-        }
-      }
-	 
+
       return new_p;
     }
 
     public double evaluate(double num){
-      double result=coefficients[0];
-      for(int i=1;i<coefficients.length;i++){
+      double result=0;
+      for(int i=0;i<coefficients.length;i++){
 	double x_val=num;
-	for(int j=1;j<i;j++){
-	  x_val=x_val*num;
+	if(exponents[i]==0){
+	    x_val = 1;
+	}
+	else{
+	    for(int j=1;j<exponents[i];j++){
+	        x_val=x_val*num;
+	    }
 	}
 	result = result + coefficients[i]*x_val;
       }
@@ -42,5 +49,14 @@ public class Polynomial{
     public boolean hasRoot(double root){
 	double result = evaluate(root);
 	return result==0;
+    }
+
+    public Polynomial multiply(Polynomial mutiple){
+	/* normal multiplication
+	*/
+    }
+
+    public saveToFile(String fileName){
+	
     }
 }
